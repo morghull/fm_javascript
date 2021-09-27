@@ -2,4 +2,4 @@ let someVariable = "someValue";
 
 //alert(77);
 
-console.log
+console.log(13%3);
