@@ -1,5 +1,5 @@
 let someVariable = "someValue";
 
-//alert(77);
+let messUser = 'Маша говорит: \'Привет\'   \u2721';
 
-console.log(13%3);
+console.log(messUser);
