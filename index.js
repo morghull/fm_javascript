@@ -1,4 +1,19 @@
-let num1 = 10;
+/*логическое сложение ИЛИ  || */
+/*возвращает первую правду или последнюю ложь*/
+/*1+0=1  1+1=2  0+1=1  0+0=0*/
 
-console.log(num1>10);
-console.log('text'>'Z');
+/*логическое умножение И  && */
+/*возвращает последнюю правду или первую ложь*/
+/*1*0=0  1*1=1  0*1=0  0*0=0*/
+
+let cond = true && 12;
+console.log(cond);
+
+let number = 25;
+
+let min = 10;
+let max = 20;
+
+if (number < min || number > max) {
+  console.log("You win!", number);
+}
