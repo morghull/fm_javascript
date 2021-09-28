@@ -1,13 +1,17 @@
-8 == 8 //true
-8 != 8 //false
-8 === 8 //true
-8 !== 8 //false
-8 == '8' //true
-8 === '8' //false
-8 != '8' //false
-8 !== '8' //true
-8 === +'8' //true
-8 === Number('8') //true
-NaN === NaN //false
-null === null //true
-undefined === undefined //true
+alert("I'm teacher");
+let userInput = prompt('Enter number: ');
+
+let isNotNumber =
+  userInput === '' ||
+  userInput === null ||
+  isNaN(Number(userInput));
+
+if (isNotNumber) {
+  console.log('error');
+} else {
+  console.log('well done');
+}
+
+// console.log(userInput);
+// console.log(isNaN(Number(userInput)));
+// console.log(typeof Number(userInput));
