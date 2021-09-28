@@ -1,19 +1,47 @@
-/*логическое сложение ИЛИ  || */
-/*возвращает первую правду или последнюю ложь*/
-/*1+0=1  1+1=2  0+1=1  0+0=0*/
+let number = 12;
 
-/*логическое умножение И  && */
-/*возвращает последнюю правду или первую ложь*/
-/*1*0=0  1*1=1  0*1=0  0*0=0*/
+//number = number + 10;
 
-let cond = true && 12;
-console.log(cond);
+number += 10; //22
 
-let number = 25;
+number %= 5; //2
 
-let min = 10;
-let max = 20;
+number **= 3; //8
 
-if (number < min || number > max) {
-  console.log("You win!", number);
+number /= number; //1
+
+number *= 4; //4
+
+let nameUser = "Elon";
+nameUser += +" Musk";
+console.log(nameUser);
+//ElonNaN
+
+let firstVariable = 45;
+let secondVariable = 12;
+let result;
+
+result = firstNumber + secondNumber;
+console.log(result);
+result = firstNumber - secondNumber;
+console.log(result);
+result = firstNumber * secondNumber;
+console.log(result);
+result = firstNumber % secondNumber;
+console.log(result);
+
+{
+  let someRandomNumber = 101;
+  let logicalValue = true;
+  let nameOfProgramLanguage = "Java";
+  let millionaireName = "Elon Musk";
+  let dataTable = null;
+
+  let number = 23;
+  number += 11;
+  number /= 2;
+  --number;
+  number *= 11;
+  ++number;
+  number %= 5;
 }
