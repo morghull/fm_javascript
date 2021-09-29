@@ -14,12 +14,6 @@ mySecondFunction();
 
 console.log(mySecondFunction);
 
-//   let checkEmpty =
-//     userInput1 === '' ||
-//     userInput1 == null ||
-//     userInput2 === '' ||
-//     userInput2 == null;
-
 /**
  *
  * @param {string} value
@@ -45,17 +39,42 @@ const getSumTwoNums = function (num1, num2) {
 };
 
 let userInput1 = prompt('enter first number');
-let userInput1 = prompt('enter second number');
+let userInput2 = prompt('enter second number');
 
-let result = getSumTwoNums(userInput1, userInput1);
+let result = getSumTwoNums(userInput1, userInput2);
 if (result === false) {
   console.log('error');
 } else {
   console.log(result);
 }
 
-// if (checkEmpty || isNaN(sum)) {
-//   console.log('error');
-// } else {
-//   console.log(userInput1, '+', userInput2, '=', sum);
-// }
+/**
+ * check if values have same type
+ * @param {any} value1
+ * @param {any} value2
+ * @returns {boolean}
+ */
+const sameTypeCheck = function (value1, value2) {
+  return typeof value1 === typeof value2;
+};
+/**
+ * returns maximum of two values
+ * @param {any} value1
+ * @param {any} value2
+ * @returns {any|null}
+ */
+const getMaxOfTwoValues = function (value1, value2) {
+  if (!sameTypeCheck) return null;
+  if (value1 >= value2) return value1;
+  return value2;
+};
+console.log(getMaxOfTwoValues(userInput1, userInput2));
+
+const isEven = function (number) {
+  if (isNotNumber(number)) return null;
+  return number % 2 === 0;
+};
+
+console.log(isEven('3'));
+console.log(isEven('4'));
+console.log(isEven('qwe'));
