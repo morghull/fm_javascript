@@ -1,47 +1,15 @@
-//task1
-const checkMultiplicity = function (devident, devisor) {
-  return devident % devisor === 0;
+const isAdult = function (age) {
+  return (age >= 18 ? '' : 'not ') + 'adult';
 };
 
-console.log(checkMultiplicity(20, 4));
-console.log(checkMultiplicity(20, 3));
+console.log(isAdult(18));
+console.log(isAdult(12));
 
-//task2
-const checkHitIntoDiapason = function (
-  checkedNumber,
-  minDiapasonBorder,
-  maxDiapasonBorder
-) {
-  return (
-    checkedNumber >= minDiapasonBorder &&
-    checkedNumber <= maxDiapasonBorder
-  );
+//function with conditional operator
+const messageCheck = function (message = '') {
+  let isValid = typeof message === typeof '' && message;
+  return isValid ? 'thank you' : 'invalid message';
 };
-
-//task3
-const checkTriangleSides = function (
-  sideOne,
-  sideTwo,
-  sideThree
-) {
-  return (
-    sideOne + sideTwo > sideThree &&
-    sideTwo + sideThree > sideOne &&
-    sideThree + sideOne > sideTwo
-  );
-};
-
-//task4
-const solveSquare = function (a, b, c) {
-  const D = b * b - 4 * a * c;
-  if (D < 0) {
-    return null;
-  }
-  if (D === 0) {
-    const x = -b / (2 * a);
-    return x;
-  }
-  const x1 = (-b + D ** 0.5) / (2 * a);
-  const x2 = (-b - D ** 0.5) / (2 * a);
-  return [x1, x2];
-};
+let userMessage = prompt('Type something, please: ');
+console.log(messageCheck(userMessage));
+console.log(messageCheck(8));
