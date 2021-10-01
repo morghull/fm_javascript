@@ -19,7 +19,4 @@ const highOrderFunction = function (num1, num2, func) {
 };
 const res = highOrderFunction(6, 5, mult);
 
-console.log(calculate());
-console.log(calculate(2, 8, '*'));
-
 console.log(res);
