@@ -13,36 +13,13 @@ const div = function (a, b) {
 const rem = function (a, b) {
   return a % b;
 };
-const calculate = function (
-  num1 = 1,
-  num2 = 2,
-  operator = '+'
-) {
-  if (isNaN(num1 * num2)) {
-    return false;
-  }
-  let f = null;
-  switch (operator) {
-    case '+':
-      f = sum;
-      break;
-    case '-':
-      f = sub;
-      break;
-    case '*':
-      f = mult;
-      break;
-    case '/':
-      f = div;
-      break;
-    case '/':
-      f = rem;
-      break;
-    // default:
-    //   return null;
-  }
-  return typeof f === 'function' ? f(num1, num2) : f;
+
+const highOrderFunction = function (num1, mum2, func) {
+  return func(num1, num2);
 };
+const res = highOrderFunction(6, 5, mult);
 
 console.log(calculate());
 console.log(calculate(2, 8, '*'));
+
+console.log(res);
