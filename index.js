@@ -1,5 +1,5 @@
-let count = 0;
 const tryToGetValidKey = function () {
+  let count = 0;
   while (true) {
     const promisKey = prompt('Gimme password, please:');
     if (promisKey === SECRET_KEY) {
