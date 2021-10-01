@@ -1,22 +1,11 @@
-const sum = function (a, b) {
-  return a + b;
+let count = 0;
+const loop = function () {
+  while (true) {
+    count++;
+    if (count % 2 === 1) continue;
+    if (count > 10) break;
+    console.log(count);
+  }
 };
-const sub = function (a, b) {
-  return a - b;
-};
-const mult = function (a, b) {
-  return a * b;
-};
-const div = function (a, b) {
-  return a / b;
-};
-const rem = function (a, b) {
-  return a % b;
-};
-
-const highOrderFunction = function (num1, num2, func) {
-  return func(num1, num2);
-};
-const res = highOrderFunction(6, 5, mult);
-
-console.log(res);
+loop();
+console.log('end loop');
