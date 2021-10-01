@@ -14,7 +14,7 @@ const rem = function (a, b) {
   return a % b;
 };
 
-const highOrderFunction = function (num1, mum2, func) {
+const highOrderFunction = function (num1, num2, func) {
   return func(num1, num2);
 };
 const res = highOrderFunction(6, 5, mult);
