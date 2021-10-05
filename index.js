@@ -1,219 +1,63 @@
-'use strict';
-
-const cat = {
-  name: 'Jirobasik',
-  isMale: true,
-  color: 'bandicoon',
-  age: 3,
-  weight: 6,
-  isSleeping: false,
-  say: function () {
-    return 'meow meow';
-  },
-  run: function () {
-    return 'walking';
-  },
+const getRangeOfNumbersModeN = function (
+  maxBorder,
+  minBorder,
+  mode
+) {
+  const result = [];
+  for (let num = minBorder; num <= maxBorder; num++) {
+    if (num % mode === 0) result.push(num);
+  }
+  result.sort(function (a, b) {
+    return b - a;
+  });
+  return result;
 };
 
-function Cat(name, isMale, color, age, weight) {
-  this.name = name;
-  this.isMale = isMale;
-  this.color = color;
-  this.age = age;
-  this.weight = weight;
-  this.say = function () {
-    return 'meow';
-  };
-}
+const taskOneResult = getRangeOfNumbersModeN(50, 20, 3);
+console.log(taskOneResult);
 
-const catJira = new Cat(
-  'Jirobasic',
-  true,
-  'bandicoon',
-  3,
-  6
-);
+const checkMath = function (num1, num2, operator) {
+  if (
+    isNaN(num1) ||
+    isNaN(num2) ||
+    !['*', '/', '+', '-'].includes(operator)
+  ) {
+    console.log('Not valid operands!');
+    return false;
+  }
 
-function Customer(firstName, lastName, isMale, age) {
-  this.name = firstName;
-  this.sname = lastName;
-  this.isMale = isMale;
-  this.age = age;
-  this.getFullName = function () {
-    return (
-      (this.isMale ? 'mr. ' : 'ms. ') +
-      this.name +
-      ' ' +
-      this.sname
-    );
-  };
-}
-
-const backEndProgrammer = new Customer(
-  'Andrey',
-  'Pupkin',
-  true,
-  24
-);
-const frontEndProgrammer = new Customer(
-  'Tetiana',
-  'Vasutina',
-  false,
-  22
-);
-console.log(backEndProgrammer.getFullName());
-console.log(frontEndProgrammer.getFullName());
-
-function Country(name, population, area) {
-  this.name = name;
-  this.population = population;
-  this.area = area;
-  this.getDensity = function () {
-    return this.population / this.area;
-  };
-  this.getOutputDensityString = function () {
-    return (
-      this.name +
-      ' has ' +
-      this.getDensity() +
-      ' person/km2'
-    );
-  };
-}
-
-const usa = new Country('USA', 331449281, 9833520);
-const germany = new Country('Germany', 83190556, 357022);
-const ukraine = new Country('Ukraine', 41362393, 603628);
-console.log(usa.getOutputDensityString());
-console.log(germany.getOutputDensityString());
-console.log(ukraine.getOutputDensityString());
-
-function Vehicle(name, maxSpeed) {
-  this.name = name;
-  this.maxSpeed = maxSpeed;
-  this.speed = 0;
-  this.accelerate = function (value) {
-    if (isNaN(value) || value < 0) {
+  while (true) {
+    userInput = prompt(`${num1}${operator}${num2}=`);
+    if (isNaN(userInput) || userInput === null)
+      console.log('Result must be a number!');
+    const result = doMath(num1, num2, operator);
+    if (!result) {
+      console.log('Wrong operator!');
       return false;
     }
-    this.speed += value;
-    if (this.speed > this.maxSpeed)
-      this.speed = this.maxSpeed;
-    return this.getSpeedometerInfo();
-  };
-  this.deaccelerate = function (value) {
-    if (isNaN(value) || value < 0) {
-      return false;
+    if (
+      doMath(num1, num2, operator) === Number(userInput)
+    ) {
+      console.log('You are right!');
+      return true;
     }
-    this.speed -= value;
-    if (this.speed < 0) this.speed = 0;
-    return this.getSpeedometerInfo();
-  };
-  this.stop = function () {
-    this.speed = 0;
-    return this.getSpeedometerInfo();
-  };
-  this.getSpeedometerInfo = function () {
-    return this.name + ' have speed ' + this.speed;
-  };
-}
-const car = new Vehicle('bmw', 120);
-console.log(car.accelerate(50));
-console.log(car.accelerate(50));
-console.log(car.accelerate(50));
-console.log(car.deaccelerate(70));
-console.log(car.deaccelerate(70));
+    console.log('Try one more time!');
+  }
+};
 
-function CeffeeMachine(brand, maxVolume) {
-  this.brand = brand;
-  this.maxVolume = maxVolume;
-  this.volume = 0;
-  this.isOn = false;
-  this.reportMessageLog = '';
-  this.turnOn = function () {
-    this.isOn = true;
-    this.addMessageToLog(this.brand + ' is working now');
-  };
-  this.addWater = function (value) {
-    if (isNaN(value) || value < 0) {
-      this.addMessageToLog(
-        'You trying add unrecognized or negative amount of water!'
-      );
+const doMath = function (num1, num2, operator) {
+  switch (operator) {
+    case '*':
+      return Number(num1) * Number(num2);
+    case '/':
+      return Number(num1) / Number(num2);
+    case '+':
+      return Number(num1) + Number(num2);
+    case '-':
+      return Number(num1) - Number(num2);
+    default:
       return false;
-    }
-    this.addMessageToLog(
-      `Trying to add ${value} water!`
-    );
-    this.volume += value;
-    if (this.volume > this.maxVolume){
-      this.addMessageToLog(
-        `WARNING: Overflow. Max capacity of a tank is ${this.maxVolume} water!`
-      );
-      this.volume = this.maxVolume;
-    }
-    this.waterStatusReport();
-  };
-  this.makeCoffee = function (value) {
-    if (isNaN(value) || value < 0) {
-      this.addMessageToLog(
-        'You trying add unrecognized or negative amount of water!'
-      );
-      return false;
-    }
-    if (!this.isOn) {
-      this.addMessageToLog(
-        'Machine is off. turn if on, please!'
-      );
-      return false;
-    }
-    if (this.volume < value) {
-      this.addMessageToLog(
-        'Not enought water for selected cup! Add water, please!'
-      );
-      return false;
-    }
-    this.addMessageToLog(
-      'Making a coffe!'
-    );
-    this.volume -= value;
-    if (this.volume < 0) this.volume = 0;
-    this.waterStatusReport();
-  };
-  this.waterStatusReport = function () {
-    this.addMessageToLog(this.volume + ' water left in tank');
-    if (this.volume === 0)
-      this.addMessageToLog(
-        'WARNING: not enough water. add it please!'
-      );
-  };
-  this.getReport = function () {
-    const message = this.reportMessageLog;
-    this.reportMessageLog = '';
-    return message;
-  };
-  this.addMessageToLog = function (message) {
-    this.reportMessageLog +=
-      (this.reportMessageLog === '' ? '' : '\n') + message;
-  };
-}
+  }
+};
 
-const zanussi = new CeffeeMachine('Zanussi', 220);
-zanussi.makeCoffee(50);
-console.log(zanussi.getReport());
-zanussi.turnOn();
-console.log(zanussi.getReport());
-zanussi.makeCoffee(50);
-zanussi.addWater(-80);
-zanussi.addWater(80);
-zanussi.addWater(80);
-zanussi.addWater(80);
-zanussi.addWater('asdasd');
-console.log(zanussi.getReport());
-zanussi.makeCoffee(50);
-console.log(zanussi.getReport());
-zanussi.makeCoffee(50);
-console.log(zanussi.getReport());
-zanussi.makeCoffee(50);
-zanussi.makeCoffee(50);
-zanussi.makeCoffee(50);
-console.log(zanussi.getReport());
+//checkMath(1, 2, '+');
