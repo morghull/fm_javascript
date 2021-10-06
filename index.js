@@ -1,26 +1,15 @@
-const createMultiplicationTable = function (
-  min = 33,
-  max = 35
-) {
-  const table = {};
-  for (let i = min; i <= max; i++) {
-    for (let j = min; j <= max; j++) {
-      table[`${i} * ${j} = `] = i * j;
-    }
-  }
-  return table;
+const t1 = 1;
+const t2 = 2;
+
+const obj1 = {
+  test: 1,
+};
+const obj2 = {
+  test: 2,
 };
 
-console.log(createMultiplicationTable());
+const link = obj1; //coping by link
 
-const getResultOfMultiplication = function (
-  expression,
-  table
-) {
-  return table[expression];
-};
-const table = createMultiplicationTable(1, 10);
-console.log(getResultOfMultiplication('2 * 2 = ', table));
-console.log(getResultOfMultiplication('3 * 8 = ', table));
-console.log(getResultOfMultiplication('4 * 5 = ', table));
-console.log(getResultOfMultiplication('2 * 9 = ', table));
+console.log(obj1===link); //ture
+
+link.prop2 = 44;
