@@ -1,15 +1,22 @@
-const t1 = 1;
-const t2 = 2;
+const obj1 = {};
+const obj2 = Object();
+const obj3 = new Object();
 
-const obj1 = {
-  test: 1,
-};
-const obj2 = {
-  test: 2,
-};
+console.log(obj1);
+console.log(obj2);
+console.log(obj3);
 
-const link = obj1; //coping by link
+function MyObj() {
+  //директива new создает пустой объект для ф-ции конструктора
+  //указатель на новый объект - this
+  if (!new.target) {
+    console.log('must be new');
+    return new MyObj();
+  }
+}
 
-console.log(obj1===link); //ture
+const myObj = MyObj();
+console.log(myObj);
 
-link.prop2 = 44;
+const myObj2 = new MyObj();
+console.log(myObj2);
