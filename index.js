@@ -1,22 +1,29 @@
-const obj1 = {};
-const obj2 = Object();
-const obj3 = new Object();
+const obj1 = {
+  name: 'obj1',
+};
 
-console.log(obj1);
-console.log(obj2);
-console.log(obj3);
+const obj2 = new Object({ name: 'obj1' });
 
-function MyObj() {
-  //директива new создает пустой объект для ф-ции конструктора
-  //указатель на новый объект - this
-  if (!new.target) {
-    console.log('must be new');
-    return new MyObj();
-  }
-}
+const ph1 = '271-45-45';
+const ph2 = '271-55-45';
+const ph3 = '271-45-77';
 
-const myObj = MyObj();
-console.log(myObj);
+const phoneBook = {
+  1: '271-45-45',
+  2: '271-55-45',
+  3: '271-45-77',
+  2: '471-33-33',
+};
 
-const myObj2 = new MyObj();
-console.log(myObj2);
+const phArray = new Array(
+  '271-45-45',
+  '271-55-45',
+  '271-45-77',
+  '471-33-33'
+);
+const phArray2 = [
+  '271-45-45',
+  '271-55-45',
+  '271-45-77',
+  '471-33-33',
+];
