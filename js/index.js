@@ -1,32 +1,39 @@
-function toString() {
-  return `${this.firstName} ${this.lastName}`;
+function StudentPrototype() {
+  this.toString = function () {
+    return `${this.firstName} ${this.lastName}`;
+  };
+  this.go = function () {
+    return `${this.firstName} ${this.lastName} go!`;
+  };
+  this.eat = function () {
+    return `${this.firstName} ${this.lastName} eating`;
+  };
 }
-const student1 = {
-  id: 1,
-  firstName: 'Elon',
-  lastName: 'Musk',
-  age: 50,
-  isMale: true,
-  toString,
-};
 
-const student2 = {
-  id: 2,
-  firstName: 'Tim',
-  lastName: 'Li',
-  age: 65,
-  isMale: true,
-  toString,
-};
+/**
+ * 
+ * @param {string} firstName 
+ * @param {string} lastName 
+ * @param {number} age 
+ * @param {boolean} isMale 
+ * @returns instance Student
+ */
+function Student(firstName, lastName, age, isMale) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.age = age;
+  this.isMale = isMale;
+  //toString,
+  if (!new.target) {
+    return new Student(
+      id,
+      firstName,
+      lastName,
+      age,
+      isMale
+    );
+  }
+}
+Student.prototype = new StudentPrototype();
 
-const student3 = {
-  id: 3,
-  firstName: 'Elon',
-  lastName: 'Musk',
-  age: 34,
-  isMale: true,
-  toString,
-};
-console.log(student1.toString());
-
-const some = 'asd';
+const student = Student('Elon', 'Musk', 34, true);
