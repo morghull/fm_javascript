@@ -1,39 +1,24 @@
-function StudentPrototype() {
-  this.toString = function () {
-    return `${this.firstName} ${this.lastName}`;
+function LadderPrototype() {
+  this.up = function () {
+    this.value ++;
+    return this;
   };
-  this.go = function () {
-    return `${this.firstName} ${this.lastName} go!`;
+  this.down = function () {
+    this.value --;
+    if (this.value <= 0) this.value = 0;
+    return this;
   };
-  this.eat = function () {
-    return `${this.firstName} ${this.lastName} eating`;
+  this.showLevel = function () {
+    return this.value;
   };
 }
-
-/**
- * 
- * @param {string} firstName 
- * @param {string} lastName 
- * @param {number} age 
- * @param {boolean} isMale 
- * @returns instance Student
- */
-function Student(firstName, lastName, age, isMale) {
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.age = age;
-  this.isMale = isMale;
-  //toString,
-  if (!new.target) {
-    return new Student(
-      id,
-      firstName,
-      lastName,
-      age,
-      isMale
-    );
-  }
+function Ladder() {
+  this.value = 0;
+  if (!new.target) return new Ladder();
 }
-Student.prototype = new StudentPrototype();
+Ladder.prototype = new LadderPrototype();
 
-const student = Student('Elon', 'Musk', 34, true);
+const ld = new Ladder();
+console.log(ld.showLevel());
+ld.up().up().up().up().up().down();
+console.log(ld.showLevel());
