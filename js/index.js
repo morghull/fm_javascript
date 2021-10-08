@@ -35,5 +35,28 @@ function createRundomUser(amount = 1) {
   }
   return db;
 }
-const users = createRundomUser(50);
+const users = createRundomUser(100);
+users.forEach(function (user) {
+  user.isSubscribed = Math.random() > 0.5;
+});
 console.table(users);
+
+//const fullNameUsers = users.map((u) => u.fullName());
+const fullNameUsers = users.map(function (user) {
+  return user.fullName();
+});
+console.table(fullNameUsers);
+
+//const retiredUsers = users.filter((user) => user.age > 65);
+const retiredUsers = users.filter(function (user) {
+  return user.age > RETIRE_AGE;
+});
+
+console.table(retiredUsers);
+
+const fittedUsers = users.filter(function (user) {
+  return (
+    user.age <= 40 && !user.isMale && user.isSubscribed
+  );
+});
+console.table(fittedUsers);
