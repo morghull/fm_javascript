@@ -1,10 +1,7 @@
-/**
- * 
- * @param {function} howSay 
- * @param {string} whatSay 
- */
-function saySomething(howSay, whatSay) {
-  howSay(whatSay);
+const users = [{ id: 1 }, { id: 2 }, { id: 3 }];
+
+function addSubscribe(user) {
+  user.isSubscribed = true;
 }
 
-saySomething(console.log,'some');
+users.forEach(addSubscribe);
