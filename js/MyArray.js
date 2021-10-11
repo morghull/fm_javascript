@@ -103,6 +103,15 @@ function MyArrayProto() {
     }
     return result;
   };
+  this.shift = function () {
+    const deletedElement = this[0];
+    for (let i = 0; i < this.length-1; i++) {
+      this[i]=this[i+1];
+    }
+    delete this[this.length-1];
+    this.length--;
+    return deletedElement;
+  };
 }
 /*data*/
 function MyArray() {
@@ -133,9 +142,15 @@ const reverseArray = new MyArray(1, 2, 3);
 console.log('reverse:', reverseArray.reverse());
 
 const pushArray = new MyArray(1, 2, 3);
-pushArray.push(4,[5],new MyArray(6));
+pushArray.push(4, [5], new MyArray(6));
 console.log('push:', pushArray);
 
 const unshiftArray = new MyArray(1, 2, 3);
-unshiftArray.unshift(4,[5],new MyArray(6));
+unshiftArray.unshift(4, [5], new MyArray(6));
 console.log('unshift:', unshiftArray);
+
+const shiftArray = new MyArray('a', 'b', 'c', 'd');
+const shiftedElement = shiftArray.shift();
+console.log('shifted element:', shiftedElement);
+console.log('shifted:', shiftArray);
+
