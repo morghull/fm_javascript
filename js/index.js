@@ -5,7 +5,6 @@ const site = {
   headers: ['Header1', 'Test', 'Header3', 'New article'],
   showHeaders() {
     console.log(this);
-    const that = this;
     this.headers.forEach(function (header, index) {
       console.log(this.title);
       console.log(that.title);
@@ -14,7 +13,7 @@ const site = {
         console.log(this);
       };
       test();
-    });
+    }, this);
   },
 };
 
