@@ -32,5 +32,9 @@ const infinitySum2 = (...args) =>
   args.reduce((result, n) => result + n);
 
 const arrNums1 = [4, 1, 3, 6];
-console.log(infinitySum2(arrNums1));
+const arrNums2 = [2, 5, 7, 9];
+console.log(infinitySum(...arrNums1));
 console.log(infinitySum2(...arrNums1));
+
+const arr3 = [...arrNums1, 101, 256, ...arrNums2];
+console.log(arr3);
