@@ -1,20 +1,21 @@
 'use strict';
 
-//declaration
-function test1() {
-  console.log(this);
-}
-
-//expression
-const test2 = function () {
-  console.log(this);
+const site = {
+  title: 'Green site',
+  headers: ['Header1', 'Test', 'Header3', 'New article'],
+  showHeaders() {
+    console.log(this);
+    const that = this;
+    this.headers.forEach(function (header, index) {
+      console.log(this.title);
+      console.log(that.title);
+      console.log(`header ${index}: ${header}`);
+      const test = () => {
+        console.log(this);
+      };
+      test();
+    });
+  },
 };
 
-//arrow
-const test3 = () => {
-  console.log(this);
-};
-
-test1();
-test2();
-test3();
+site.showHeaders();
