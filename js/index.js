@@ -30,3 +30,7 @@ console.log(infinitySum(1, 23, 4));
 
 const infinitySum2 = (...args) =>
   args.reduce((result, n) => result + n);
+
+const arrNums1 = [4, 1, 3, 6];
+console.log(infinitySum2(arrNums1));
+console.log(infinitySum2(...arrNums1));
