@@ -1,28 +1,15 @@
 'use strict';
 
-const power = (num, pow) => {
-  if (pow === 1) {
-    return num;
-  }
-  return num * power(num, pow - 1);
-};
+const str = 'to    be     or        not to be';
 
-console.log(power(2, 2));
-console.log(power(2, 3));
-console.log(power(2, 4));
+const capitalize = (input) =>
+  input
+    .replace('  ', ' ')
+    .split(' ')
+    .map(
+      (word) =>
+        word[0].toUpperCase() + word.slice(1).toLowerCase()
+    )
+    .join(' ');
 
-const factorial = (num) => {
-  if (num === 0) {
-    return 1;
-  }
-  return num * factorial(num - 1);
-};
-
-console.log(factorial(2));
-console.log(factorial(3));
-console.log(factorial(4));
-
-const greaterOne = (a, b) => (a > b ? a : b);
-
-const arr = [1,2,3,4,5];
-console.table(arr);
+console.log(capitalize('asd asd as dasd asd s'));
