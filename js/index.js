@@ -21,3 +21,8 @@ const factorial = (num) => {
 console.log(factorial(2));
 console.log(factorial(3));
 console.log(factorial(4));
+
+const greaterOne = (a, b) => (a > b ? a : b);
+
+const arr = [1,2,3,4,5];
+console.table(arr);
