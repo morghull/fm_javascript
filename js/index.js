@@ -1,15 +1,26 @@
 'use strict';
 
-const str = 'to    be     or        not to be';
+class Animal {
+  constructor(name, amountOfLegs, type) {
+    this.name = name;
+    this.amountOfLegs = amountOfLegs;
+    this.type = type;
+  }
+  get name() {
+    return this._name;
+  }
+  set name(name) {
+    if (typeof name !== 'string') throw new TypeError('Name must be strig');
+    this._name = name;
+  }
+  eat() {
+    return `${this.name} is eating`;
+  }
 
-const capitalize = (input) =>
-  input
-    .replace('  ', ' ')
-    .split(' ')
-    .map(
-      (word) =>
-        word[0].toUpperCase() + word.slice(1).toLowerCase()
-    )
-    .join(' ');
+  static isAnimal(obj) {
+    return obj instanceof Animal;
+  }
+}
 
-console.log(capitalize('asd asd as dasd asd s'));
+const cat1 = new Animal('Pushok', 4, 'cat');
+const dog1 = new Animal('Rem', 4, 'dog');
