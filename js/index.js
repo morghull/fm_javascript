@@ -6,39 +6,65 @@
 ПОлиморфизм
  */
 
-class User {
-  constructor(name, sname, age) {
+class Squirrel {
+  constructor(name, color) {
     this.name = name;
-    this.sname = sname;
-    this.age = age;
-    this.isBanned = false;
+    this.color = color;
   }
-  getFullName() {
-    return `${this.name} ${this.sname}`;
+  get name() {
+    return this._name;
   }
-  static isUser(obj) {
-    return obj instanceof User;
+  set name(name) {
+    this._name = name;
+  }
+  get color() {
+    return this._color;
+  }
+  set color(color) {
+    this._color = color;
+  }
+  jump() {
+    return `${this.name} is jumping`;
   }
 }
 
-const user = new User('Test', 'STest', 33);
-
-class Moderator extends User {
-  constructor(name, sname, age, rule) {
-    super(name, sname, age);
-    this.rule = rule;
+class FlyingSquirrel extends Squirrel {
+  constructor(name, color, maxFlyDistance) {
+    super(name, color);
+    this.maxFlyDistance = maxFlyDistance;
   }
-  addMessage(message) { }
-  removeMessage(id) { }
-}
-
-class Admin extends User {
-  constructor(name, sname, age) {
-    super(name, sname, age);
+  get maxFlyDistance() {
+    return this._maxFlyDistance;
   }
-  toggleBan(user) {
-    if (!User.isUser(user)) throw new TypeError('Only user can be banned');
-    user.isBanned = !user.isBanned;
+  set maxFlyDistance(distance) {
+    this._maxFlyDistance = distance;
+  }
+  fly(distance) {
+    if (distance > this.maxFlyDistance) throw new RangeError('This poor squirrel can\'t fly so far!');
+    return `${this.name} is flying for ${distance} meters`;
   }
 }
+
+class PooshkinSquirrel extends FlyingSquirrel {
+  constructor(name, color, maxFlyDistance, songs) {
+    super(name, color, maxFlyDistance);
+    this.songs = songs;
+  }
+  dance() {
+    return `${this.name} is dancing`;
+  }
+  sing() {
+    return this.songs.join(',');
+  }
+}
+
+const sq1 = new Squirrel('sq1', 'red');
+console.log(sq1.jump());
+const sq2 = new FlyingSquirrel('sq2', 'brown', 25);
+console.log(sq2.jump());
+console.log(sq2.fly(14));
+const sq3 = new PooshkinSquirrel('sq3', 'yellow', 30, ['lalala', 'dududud', 'nanana']);
+console.log(sq3.jump());
+console.log(sq3.fly(13));
+console.log(sq3.sing());
 
