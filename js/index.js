@@ -1,26 +1,44 @@
 'use strict';
 
-class Animal {
-  constructor(name, amountOfLegs, type) {
-    this.name = name;
-    this.amountOfLegs = amountOfLegs;
-    this.type = type;
-  }
-  get name() {
-    return this._name;
-  }
-  set name(name) {
-    if (typeof name !== 'string') throw new TypeError('Name must be strig');
-    this._name = name;
-  }
-  eat() {
-    return `${this.name} is eating`;
-  }
+/*
+Инкапсуляция
+Наследование
+ПОлиморфизм
+ */
 
-  static isAnimal(obj) {
-    return obj instanceof Animal;
+class User {
+  constructor(name, sname, age) {
+    this.name = name;
+    this.sname = sname;
+    this.age = age;
+    this.isBanned = false;
+  }
+  getFullName() {
+    return `${this.name} ${this.sname}`;
+  }
+  static isUser(obj) {
+    return obj instanceof User;
   }
 }
 
-const cat1 = new Animal('Pushok', 4, 'cat');
-const dog1 = new Animal('Rem', 4, 'dog');
+const user = new User('Test', 'STest', 33);
+
+class Moderator extends User {
+  constructor(name, sname, age, rule) {
+    super(name, sname, age);
+    this.rule = rule;
+  }
+  addMessage(message) { }
+  removeMessage(id) { }
+}
+
+class Admin extends User {
+  constructor(name, sname, age) {
+    super(name, sname, age);
+  }
+  toggleBan(user) {
+    if (!User.isUser(user)) throw new TypeError('Only user can be banned');
+    user.isBanned = !user.isBanned;
+  }
+}
+
