@@ -1,43 +1,14 @@
 'use strict';
 
-/*
-Инкапсуляция
-Наследование
-Полиморфизм
- */
+const mySymbol = Symbol('metka tolko dla usera'); //хранит уникальный идетнтификатор
 
-class Figure {
-  constructor(name) {
-    this.name = name;
-  }
-  gerArea() { }
+const obj = {
+  login: 'some',
+  [mySymbol]: '123' //как уникальное имя свойства
 }
 
-class Triangular extends Figure {
-  constructor(a, b, angle) {
-    super('Triangular');
-    this.a = a;
-    this.b = b;
-    this.angle = angle;
-  }
-  gerArea() {
-    return this.a * this.b * Math.sin(this.angle * (180 / Math.PI));
-  }
-}
+const arr = [1, 2, 3, 4, 5];
 
-class Circle extends Figure {
-  constructor(r) {
-    super('Circle');
-    this.r = r;
-  }
-  gerArea() {
-    return this.r * this.r * Math.PI;
-  }
-}
-
-const t = new Triangular(3, 4, 45);
-const c = new Circle(10);
-
-function gerAreaFigure(figure) {
-  return figure.gerArea();
+for (const iterator of arr) {
+  console.log(iterator);
 }

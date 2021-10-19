@@ -4,7 +4,7 @@ function MyArrayProto() {
     for (let i = 0; i < arguments.length; i++) {
       if (
         arguments[i] instanceof MyArray ||
-        arguments[i].constructor === Array
+        arguments[i] instanceof Array
       ) {
         for (let j = 0; j < arguments[i].length; j++) {
           this[this.length++] = arguments[i][j];
@@ -17,7 +17,7 @@ function MyArrayProto() {
     for (let i = arguments.length - 1; i >= 0; i--) {
       if (
         arguments[i] instanceof MyArray ||
-        arguments[i].constructor === Array
+        arguments[i] instanceof Array
       ) {
         for (let j = arguments[i].length - 1; j >= 0; j--) {
           let value = arguments[i][j];
@@ -105,10 +105,10 @@ function MyArrayProto() {
   };
   this.shift = function () {
     const deletedElement = this[0];
-    for (let i = 0; i < this.length-1; i++) {
-      this[i]=this[i+1];
+    for (let i = 0; i < this.length - 1; i++) {
+      this[i] = this[i + 1];
     }
-    delete this[this.length-1];
+    delete this[this.length - 1];
     this.length--;
     return deletedElement;
   };
